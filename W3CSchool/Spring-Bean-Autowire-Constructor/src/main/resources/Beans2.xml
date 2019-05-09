@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- 当且仅当构造函数中，仅有name、age参数时，该配置是正确配置。
+		 若构造函数中，还含有其他的参数，则报错。 
+	-->
+	<bean id="textEditor" class="com.moon.constructor.TextEditor2">
+		<property name="spellChecker" ref="spellChecker" />
+		<constructor-arg name="name" value="李二狗" />
+		<constructor-arg name="age" value="108" />
+		
+	</bean>
+	
+	
+	<!-- 当且仅当构造函数中，仅有 spellChecker参数时，该配置时正确配置。
+		 若构造函数中，还含有其他的参数，则报错。 
+	 -->
+	<bean id="textEditor2" class="com.moon.constructor.TextEditor2">
+		<constructor-arg ref="spellChecker" />
+		<property name="name" value="李二狗" />
+		<property name="age" value="108" />
+	</bean>
+	
+	
+	<bean id="textEditor3" class="com.moon.constructor.TextEditor2">
+		<constructor-arg ref="spellChecker" />
+		<constructor-arg name="name" value="李二狗" />
+		<constructor-arg name="age" value="108" />
+	</bean>
+	
+	<!-- 
+		配置错误！
+		错误原因：在含参数'SpellChecker spellChecker, String name, Integer age, Long id'的构造函数中
+			        没有按参数顺序及参数本身的数据类型进行赋值！ 
+	         在程序运行加载的时候，也会因为这个配置错误的Bean，在控制台中提示关于它的错误。
+	 -->
+	<!--  
+	<bean id="textEditor4" class="com.moon.constructor.TextEditor2">
+		<constructor-arg ref="spellChecker" />
+		<constructor-arg value="108" />
+		<constructor-arg value="李二狗" />
+		<constructor-arg value="1000" />
+	</bean>
+	 -->
+	
+	
+	<!-- 
+		配置正确
+	 -->
+	<bean id="textEditor5" class="com.moon.constructor.TextEditor2">
+		<constructor-arg ref="spellChecker" />
+		<constructor-arg name="age" value="108" />
+		<constructor-arg name="name" value="李二狗" />
+		<constructor-arg name="id" value="12" />
+	</bean>
+	
+	
+	<bean id="spellChecker" class="com.moon.constructor.SpellChecker" />
+	
+</beans>

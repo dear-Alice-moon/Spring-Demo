@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	
+	<!-- 开启Spring容器中的'注解连线'
+		需要注意的是，在头文件中，还增加了3行代码。
+		xmlns:context="http://www.springframework.org/schema/context"
+		http://www.springframework.org/schema/context
+   	 	http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	 -->
+	<context:annotation-config />
+	
+	<bean id="textEditor" class="com.moon.autowired.setter.TextEditor">
+		<property name="name" value="Tom" />
+		<property name="age" value="18" />      
+	</bean>
+	
+	<!-- 
+		@Autowired注解用在 TextEditor.java中的'setSpellChecker(SpellChecker spellChecker)'函数上
+		相当于 'Bean配置中的byType连接'，'spellChecker'配置Bean必须存在，否则报错。
+	 -->
+	<bean id="spellChecker" class="com.moon.autowired.setter.SpellChecker">
+	</bean>
+	
+	
+</beans>

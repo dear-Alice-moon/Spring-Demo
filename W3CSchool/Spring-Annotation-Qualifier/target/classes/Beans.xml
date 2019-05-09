@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	
+	<!-- 开启Spring容器中的'注解连线'
+		需要注意的是，在头文件中，还增加了3行代码。
+		xmlns:context="http://www.springframework.org/schema/context"
+		http://www.springframework.org/schema/context
+   	 	http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	 -->
+	<context:annotation-config />
+	
+	<bean id="profile" class="com.moon.qualifier.Profile">
+	</bean>
+	
+	<bean id="student1" class="com.moon.qualifier.Student">
+		<property name="name" value="Zara" />
+		<property name="age" value="11" />
+	</bean>
+	
+	<bean id="student2" class="com.moon.qualifier.Student">
+		<property name="name" value="Alice" />
+		<property name="age" value="28" />
+	</bean>
+	
+	
+</beans>

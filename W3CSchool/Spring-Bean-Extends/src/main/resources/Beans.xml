@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="helloWorld" class="com.moon.bean.extend.HelloWorld">
+		<property name="message1" value="为 HelloWorld.java 类中 message1 属性赋值." />
+		<property name="message2" value="为 HelloWorld.java 类中 message2 属性赋值." />
+		<!-- <property name="test" value="trueee" /> -->
+		<!-- <property name="flagg" value="true" /> -->
+	</bean>
+	
+	
+	<bean id="user1" class="com.moon.bean.extend.User1">
+		<property name="name" value="张三" />
+		<property name="flagg" value="true" />
+	</bean>
+	
+	
+	<bean id="helloIndia" class="com.moon.bean.extend.HelloIndia" parent="helloWorld">
+		<property name="message1" value="为  HelloIndia.java 类中message1属性重写值." />
+		<property name="message3" value="为 HelloIndia.java 类中 message3 属性赋值." />
+	</bean>
+	
+	
+</beans>

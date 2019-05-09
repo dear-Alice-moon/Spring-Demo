@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	
+	<bean id="multiEntity" class="com.moon.constructor.MultiEntity" scope="prototype">
+		<constructor-arg ref="spellChecker" />
+		<constructor-arg ref="textEditor" />
+	</bean>
+	
+	<bean id="multiEntity2" class="com.moon.constructor.MultiEntity" scope="prototype">
+		<constructor-arg ref="spellChecker" />
+		<constructor-arg ref="textEditor" />
+		<constructor-arg type="int" value="5" /> <!-- 使用 type 属性显式的指定了构造函数参数的类型. -->
+		<constructor-arg index="3" value="李四" /> <!-- 使用 index 属性来显式的指定构造函数参数的索引，索引从0开始. -->
+	</bean>
+	
+	
+	<bean id="spellChecker" class="com.moon.constructor.SpellChecker" />
+	<bean id="textEditor" class="com.moon.constructor.TextEditor" />
+	
+</beans>

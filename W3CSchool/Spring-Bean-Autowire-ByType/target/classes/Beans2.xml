@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- Spring 自动装配 byType -->
+	<bean id="textEditor" class="com.moon.bytype.TextEditor" autowire="byType">
+		<property name="name" value="张三年"></property>
+		<property name="age" value="108"></property>
+	</bean>
+	
+	<bean id="spellChecker" class="com.moon.bytype.SpellChecker" />
+	
+	<!-- 测试所用，控制台报错. 
+		  在TextEditor.java(第14行)中无法调用spellCheck实体类。  
+		 2018/12/02 11:50  
+	-->
+	<!-- <bean id="spellChecker" class="java.lang.String" /> -->
+	
+	
+	
+</beans>

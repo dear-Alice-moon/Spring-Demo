@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="helloWorld" class="com.moon.event.HelloWorld">
+		<property name="message" value="你好，世界." />
+	</bean>
+	
+	<!-- 
+		若将 contextStartEventHandler、 contextStopEventHandler 这2个Bean注释掉，
+		则无法在 MainApp中进行事务的开启、关闭，控制台不报错。
+	 -->
+	<bean id="contextStartEventHandler" class="com.moon.event.ContextStartEventHandler" />
+	
+	<bean id="contextStopEventHandler" class="com.moon.event.ContextStopEventHandler" />
+	
+	
+</beans>

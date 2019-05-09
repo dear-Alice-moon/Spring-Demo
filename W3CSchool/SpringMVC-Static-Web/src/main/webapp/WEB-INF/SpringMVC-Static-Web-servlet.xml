@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xsi:schemaLocation="
+ http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+ http://www.springframework.org/schema/mvc
+ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<!-- 配置注解扫描 -->
+	<context:component-scan base-package="com.moon.staticWeb" />
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	
+	<!-- 
+		<mvc:resources..../> 标签被用来映射静态页面。 mapping 属性必须是一个指定一个 http 请求的 URL 模式的 Ant 模式。 
+		location 属性必须指定一个或者多个具有包含图片，样式表，JavaScript 和其他静态内容的静态页面的资源目录位置。
+		多个资源位置可以使用逗号分隔这些值的列表来被指定。
+	 -->
+	<mvc:resources mapping="/pages/**" location="/WEB-INF/pages/" />
+	<mvc:annotation-driven/>
+	
+</beans>

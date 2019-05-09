@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans     
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<!-- 配置自动扫描的包 -->
+	<context:component-scan base-package="com.moon.exception" />
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<!-- 通过测试可得，当SpringException 异常发生，前台页面会映射跳转到ExceptionPage.jsp页面 -->
+				<prop key="com.moon.exception.exception.SpringException">ExceptionPage</prop>
+				<!-- 该行代码为错误代码  2019/01/09 14:37 -->
+				<!-- <prop key="com.moon.exception.exception.SpringException">exceptionMsg</prop> -->
+			</props>
+		</property>
+		<!--  -->
+		<property name="defaultErrorView" value="error" />
+	</bean>
+	
+	
+</beans>

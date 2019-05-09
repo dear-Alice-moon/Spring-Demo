@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="javaCollection" class="com.moon.collection.JavaCollection">
+		
+		<property name="addressList">
+			<list>
+				<value>Tom</value>
+				<ref bean="threeColl"/>
+			</list>
+		</property>
+		
+		<property name="addressSet">
+			<set>
+				<value>张三</value>
+				<ref bean="threeColl" />
+			</set>
+		</property>
+		
+		<property name="addressMap">
+			<map>
+				<entry key="mapOne" value="小红" />
+				<entry key="mapTwo" value-ref="threeColl"></entry>
+			</map>
+		</property>
+		
+		<property name="addressProp">
+			<props>
+				<prop key="one">张三丰</prop>
+				<prop key="two">达摩祖师</prop>
+			</props>
+		</property>
+		
+	</bean>
+	
+	
+	
+	<bean id="threeColl" class="com.moon.collection.TestCollection">
+		
+		<!-- List<T>集合 -->
+		<property name="addList">
+			<list>
+				<value>Bob</value>
+				<value>Linda</value>
+			</list>
+		</property>
+		
+		
+		<!-- Set<T>集合 -->
+		<property name="addSet">
+			<set>
+				<value>Kimi</value>
+				<value>Joun</value>
+			</set>
+		</property>
+		
+		<!-- Map<T,T>集合 -->
+		<property name="addMap">
+			<map>
+				<entry key="testOne" value="钱多多" />
+				<entry key="testTwo" value="钟馗" />
+			</map>
+		</property>
+		
+		
+	</bean>
+	
+	
+	
+</beans>
